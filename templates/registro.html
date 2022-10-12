@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEN FORM TEST</title>
+
+   
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="showHome">Inicio</a></li>
+            
+            
+          </ul>
+        </nav>
+        <h3 class="text-muted">Formulario</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Datos a Registrar</h1>
+        
+         <form action = "{{ url_for('registro') }}" onsubmit="return validar()" method = "POST">
+       <!--- <form class="form-signin">-->
+        
+       
+        <label for="inputName" class="sr-only">Nombre</label>
+        <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Nombre" required autofocus>
+        
+        <label for="email" class="sr-only">Correo electrónico</label>
+        <input type="text" name="email" id="email" class="form-control" placeholder="email" required autofocus>
+        
+        <label for="ciudad" class="sr-only">Ciudad</label>
+        <input type="text" name="ciudad" id="ciudad" class="form-control" placeholder="ciudad" required>
+        
+        
+        <input type = "submit" value = "Subir Datos" onclick="alerta()" class="btn btn-lg btn-primary btn-block"/><br>
+        <!---<button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Registrarse</button> -->
+      </form>
+      <h1 id="resultado"></h1>
+      <a href="/list"> Ir a la lista</a>
+      </div>
+
+
+      <footer class="footer">
+        <p>&copy;Carlos Encina</p>
+      </footer>
+
+    </div>
+   
+        
+   
+     
+
+  
+  <script>
+          var retardo;
+         function validar()
+          {
+          var opcion = confirm("Desea guardar los datos?");
+          if(opcion==true)
+          {
+            document.getElementById("resultado").innerHTML="Guardado correctamente"; //hacemos aparecer el mensaje
+            retardo= setInterval(borrar,8000);  //borramos 
+          }
+          return opcion;
+      }
+      function borrar(){
+        document.getElementById("resultado").innerHTML=" "; //borramos el mensaje
+        clearInterval(retardo);
+
+      }
+   
+  </script>
+
+      
+
+
+
+
+
+
+  </body>
+</html>
